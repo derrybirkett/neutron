@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob:;">
+    <title>Neutron IDE</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" data-name="vs/editor/editor.main" href="./node_modules/monaco-editor/min/vs/editor/editor.main.css">
+</head>
+<body>
+    <div class="ide-container">
+        <!-- Header with tabs and controls -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-text">Neutron</span>
+            </div>
+            <div class="tab-container">
+                <div class="tabs" id="tabs"></div>
+                <button class="new-tab-btn" id="newTabBtn" title="New File">+</button>
+            </div>
+            <div class="header-controls">
+                <div class="status-info">
+                    <span id="lineCol">Ln 1, Col 1</span>
+                    <span id="language">Plain Text</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main content area -->
+        <div class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <h3>Explorer</h3>
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <div class="file-explorer">
+                    <div class="no-files-message">
+                        <p>No files open</p>
+                        <button class="open-file-btn" id="openFileBtn">Open File</button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Editor area -->
+            <main class="editor-area">
+                <div class="editor-container" id="editorContainer">
+                    <div class="welcome-screen" id="welcomeScreen">
+                        <div class="welcome-content">
+                            <h1>Welcome to Neutron IDE</h1>
+                            <p>A modern, lightweight code editor built with Electron and Monaco Editor</p>
+                            <div class="welcome-actions">
+                                <button class="welcome-btn" id="welcomeNewFile">New File</button>
+                                <button class="welcome-btn" id="welcomeOpenFile">Open File</button>
+                            </div>
+                            <div class="recent-files">
+                                <h3>Getting Started</h3>
+                                <ul>
+                                    <li>Use <kbd>Ctrl+N</kbd> (or <kbd>Cmd+N</kbd>) to create a new file</li>
+                                    <li>Use <kbd>Ctrl+O</kbd> (or <kbd>Cmd+O</kbd>) to open an existing file</li>
+                                    <li>Use <kbd>Ctrl+S</kbd> (or <kbd>Cmd+S</kbd>) to save your work</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Status bar -->
+        <footer class="status-bar">
+            <div class="status-left">
+                <span id="statusMessage">Ready</span>
+            </div>
+            <div class="status-right">
+                <span id="encoding">UTF-8</span>
+                <span id="eol">LF</span>
+                <span id="fileSize"></span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Load Monaco Editor -->
+    <script>
+        var require = { paths: { 'vs': './node_modules/monaco-editor/min/vs' } };
+    </script>
+    <script src="./node_modules/monaco-editor/min/vs/loader.js"></script>
+    <script src="./node_modules/monaco-editor/min/vs/editor/editor.main.nls.js"></script>
+    <script src="./node_modules/monaco-editor/min/vs/editor/editor.main.js"></script>
+    
+    <!-- Load our app script -->
+    <script src="renderer.js"></script>
+</body>
+</html>

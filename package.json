@@ -1,0 +1,22 @@
+{
+  "name": "neutron",
+  "version": "1.0.0",
+  "description": "A basic IDE built with Electron and Monaco Editor",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["electron", "ide", "monaco", "editor"],
+  "author": "Derry",
+  "license": "MIT",
+  "type": "commonjs",
+  "devDependencies": {
+    "electron": "^38.1.2"
+  },
+  "dependencies": {
+    "monaco-editor": "^0.53.0"
+  }
+}
